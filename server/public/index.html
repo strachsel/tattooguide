@@ -18,7 +18,13 @@
     </div>
     <div class="content">
       <div ng-controller="ContentCtrl">
-        <div ng-repeat="tattoo in tattoos | filter:globalSearch">
+        <div id="search">
+          <a href="#" ng-click="showDetails()"> seach </a>
+        </div>
+        <div id="reset">
+          <a href="#" ng-click="resetSearch()"> reset </a>
+        </div>
+        <div ng-repeat="tattoo in tattoos | filter:globalSearch" ng-show="details.showing">
           <!-- <img src={{img}}/> -->
           <h2>{{tattoo.name}}</h2>
           <p>{{tattoo.description}}</p>
