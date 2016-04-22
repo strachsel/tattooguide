@@ -1,0 +1,23 @@
+@font-face {
+  font-family: SinkinReg;
+  src: url(../fonts/SinkinSans-400Regular.otf);
+}
+
+@font-face {
+  font-family: SinkinThin;
+  src: url(../fonts/SinkinSans-300Light.otf);
+}
+
+@font-face {
+  font-family: SinkinBold;
+  src: url(../fonts/SinkinSans-600SemiBold.otf);
+}
+
+h1 {
+  font-family: SinkinThin;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-family: SinkinThin;
+}
