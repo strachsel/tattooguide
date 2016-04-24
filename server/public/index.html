@@ -5,32 +5,56 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/style.css" />
+    <link href='https://fonts.googleapis.com/css?family=Unica+One' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
   </head>
   <body ng-app="myApp">
+    <video autoplay  poster="" id="bgvid" loop>
+      <source src="img/video.mp4" type="video/mp4">
+    </video>
     <div class="main">
       <div ng-controller="MainCtrl">
         <h1>{{name}}</h1>
         <h2>{{description}}</h2>
       </div>
-    </div>
-    <div id="searchBoxes">
-      <input type="text" ng-model="globalSearch.name"/>
-    </div>
-    <div class="content">
       <div ng-controller="ContentCtrl">
-        <div id="search">
-          <a href="#" ng-click="showDetails()"> seach </a>
-        </div>
-        <div id="reset">
-          <a href="#" ng-click="resetSearch()"> reset </a>
-        </div>
+        <form name="searchForm" id="searchBoxes">
+          <input id="searchInput" name="myfield" placeholder="Look up the tattoo" ng-model="globalSearch.name" ng-minlength="1" required/>
+          <div id="searchButtons">
+            <input id="search" type="button" value="Search" ng-click="showDetails()"/>
+            <input id="reset" type="button" value="Reset" ng-click="resetSearch()"/>
+          </div>
+          <!-- <span ng-show="!myfield"></span> -->
+        </form>
         <div ng-repeat="tattoo in tattoos | filter:globalSearch" ng-show="details.showing">
           <!-- <img src={{img}}/> -->
           <h2>{{tattoo.name}}</h2>
           <p>{{tattoo.description}}</p>
         </div>
       </div>
-    </div>
+      <!--TODO: Make the search function not run if search field is empty  -->
+      <!-- <div class="content">
+        <div class="searchButtons" ng-controller="ContentCtrl">
+          <ul>
+            <li id="search">
+              <a href="#" ng-click="showDetails()">
+                <span> seach </span>
+              </a>
+            </li>
+            <li id="reset">
+              <a href="#" ng-click="resetSearch()">
+                <span>reset</span>
+              </a>
+            </li>
+          </ul>
+          <div ng-repeat="tattoo in tattoos | filter:globalSearch" ng-show="details.showing">
+             <img src={{img}}/>
+            <h2>{{tattoo.name}}</h2>
+            <p>{{tattoo.description}}</p>
+          </div>
+        </div>
+      </div> -->
+    </div> <!-- main end -->
     <script src="vendors/angular.min.js"></script>
     <script src="js/data.json"></script>
     <script src="js/app.js"></script>
